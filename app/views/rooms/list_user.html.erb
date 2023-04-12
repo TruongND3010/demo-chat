@@ -1,0 +1,3 @@
+<% @users.each do |user| %>
+<p><%= link_to user.email, convention_user_room_messages_path(user.id) %></p>
+<% end %>

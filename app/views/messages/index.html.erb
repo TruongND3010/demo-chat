@@ -1,0 +1,15 @@
+<div id="messages">
+  <div class="list-message">
+    <% @messages.each do |message| %>
+      <%= render partial: 'messages/detail', locals: {message: message}  %>
+    <% end %>
+  </div>
+  <div class="content">
+    <%= form_for Message.new, url: room_messages_path, scope: :message, method: :post, remote: true, class: 'submit-form' do |form| %>
+      <%= form.hidden_field :room_id, value: @room.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.text_field :content %>
+      <button type="button" class="btn-submit-form">Send message</button>
+    <% end %>
+  </div>
+</div>
