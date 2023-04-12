@@ -3,16 +3,33 @@ class MessagesController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    # redirect_to root_path unless User.find_by(id: params[:user_id]).present?
-    @messages = Message.where(room_id: params[:room_id])
-    @room = Room.find_by(id: params[:room_id])
+    user = User.find_by(id: params[:id])
+    redirect_to root_path if user.nil?
+
+    list_room_current = current_user.rooms.pluck(:id)
+    list_room_user = user.rooms.pluck(:id)
+    room_id = list_room_current & list_room_user
+
+    if room_id.first.nil?
+      @room = Room.create(name: SecureRandom.hex(6))
+      Participant.create([{ user_id: user.id, room_id: @room.id }, { user_id: current_user.id, room_id: @room.id }])
+    else
+      @room = Room.find_by(id: room_id.first)
+    end
+
+    @users = User.all_except(current_user.id)
+    @messages = Message.where(room_id: @room.id)
   end
 
   def create
-    @message = Message.create(param_message)
-    respond_to do |format|
-      html_string = render_to_string(partial: 'messages/detail', locals: { message: @message })
-      format.json { render json: { status: 200, data: { message: html_string } } }
+    @message = Message.new(param_message)
+
+    # Lưu message và gửi broadcast tới room sử dụng background job
+    if @message.save
+      SendMessageJob.perform_later(params[:message][:room_id], @message)
+      render json: { message: 'create success' }, status: 200
+    else
+      render json: { error: @message.errors.full_messages.first }
     end
   end
 

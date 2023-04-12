@@ -1,15 +1,28 @@
-<div id="messages">
-  <div class="list-message">
-    <% @messages.each do |message| %>
-      <%= render partial: 'messages/detail', locals: {message: message}  %>
-    <% end %>
+<div class="all-content">
+  <div class="block-user">
+    <%= render partial: "users/list", locals: {users: @users} %>
   </div>
-  <div class="content">
-    <%= form_for Message.new, url: room_messages_path, scope: :message, method: :post, remote: true, class: 'submit-form' do |form| %>
-      <%= form.hidden_field :room_id, value: @room.id %>
-      <%= form.hidden_field :user_id, value: current_user.id %>
-      <%= form.text_field :content %>
-      <button type="button" class="btn-submit-form">Send message</button>
-    <% end %>
+
+  <div class="block-messages">
+    <input type="hidden" class="room-id" value="<%= @room.id %>">
+    <input type="hidden" class="current-user-id" value="<%= current_user.id %>">
+
+    <div class="list-message">
+      <% if @messages.present? %>
+        <% @messages.each do |message| %>
+          <%= render partial: 'messages/detail', locals: {message: message}  %>
+        <% end %>
+      <% else %>
+        No message
+      <% end %>
+    </div>
+    <div class="content">
+      <%= form_for Message.new, url: room_messages_path(@room.id), scope: :message, method: :post, remote: true, class: 'submit-form' do |form| %>
+        <%= form.hidden_field :room_id, value: @room.id %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.text_field :content %>
+        <button type="button" class="btn-submit-form btn btn-outline-success">Send message</button>
+      <% end %>
+    </div>
   </div>
 </div>

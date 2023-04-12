@@ -21,12 +21,12 @@ Rails.application.routes.draw do
 
     resources :messages do
       collection do
-        get 'convention/user/:id', to: 'messages#index', as: 'convention_user'
+        # get 'convention/user/:id', to: 'messages#index', as: 'convention_user'
       end
     end
   end
 
-
+  get 'rooms/user/:id', to: 'messages#index', as: 'convention_user'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

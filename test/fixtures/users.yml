@@ -1,0 +1,8 @@
+#password = '123456'
+one:
+  email: "alice@example.com"
+  encrypted_password: '$2a$12$EaxuPvOgOLVjFsMNrnvbP.I.tpt/vVfcC0JZdHNwlwdbJIhaBPWtW'
+
+two:
+  email: "bob@example.com"
+  encrypted_password: '$2a$12$EaxuPvOgOLVjFsMNrnvbP.I.tpt/vVfcC0JZdHNwlwdbJIhaBPWtW'

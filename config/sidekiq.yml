@@ -1,0 +1,8 @@
+# config/sidekiq.yml
+
+# Số lượng worker (luồng xử lý công việc độc lập) Sidekiq
+:concurrency: 5
+
+# Địa chỉ kết nối Redis (hoặc Redis Sentinel)
+:redis:
+  url: redis://localhost:6379/0

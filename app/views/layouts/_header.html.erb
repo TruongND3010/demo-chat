@@ -1,7 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
   <a class="navbar-brand" href="/">ActionCable Chat</a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-  </div>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-logout' %>
 </nav>

@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Project sử dụng:
 
-* Ruby version
+* Ruby version: 2.7.5
+  
+* rails version: 7.0
+  
+* Đường dẫn admin: http://localhost:3000/admin
+tk: admin@example.com
+mk: password
 
-* System dependencies
+* Đường dẫn user: http://localhost:3000
 
-* Configuration
+* Có sử dụng sidekiq để gửi broadcast cho room
 
-* Database creation
+* Có viết unit test cho send_message_job_test và messages_controller_test
 
-* Database initialization
+Các bước cài đặt:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Cài thư viện
+```shell
+bundle i
+```
+Khởi tạo database
+```shell
+rails db:create db:migrate db:seed
+```
+Chạy rails serve
+```shell
+rails s
+```
+Chạy sidekiq
+```shell
+bundle exec sidekiq
+```

@@ -1,0 +1,86 @@
+.list-message {
+  padding: 0 20px;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  max-height: calc(100vh - 60px - 100px);
+  overflow: auto;
+}
+
+.container-message {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container-message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+
+.navbar {
+  height: 60px;
+}
+
+.btn-logout {
+  background: wheat;
+  color: red;
+  text-decoration: none !important;
+}
+
+.btn:hover {
+  opacity: 0.75;
+}
+
+.mrl-50 {
+  margin-left: 50px;
+}
+
+.mrr-50 {
+  margin-right: 50px;
+}
+
+.all-content {
+  display: flex;
+  height: calc(100vh - 60px);
+
+  .block-user {
+    width: 25%;
+    padding: 1rem;
+    background: #a58c8c;
+    overflow: auto;
+
+    a {
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 2px 5px;
+      margin: 5px 0;
+      font-size: 18px;
+      text-decoration: none !important;
+      background: white;
+    }
+  }
+
+  .block-messages {
+    width: 75%;
+    padding: 1rem;
+  }
+}

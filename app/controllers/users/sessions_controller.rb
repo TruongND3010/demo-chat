@@ -14,9 +14,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    ActionCable.server.disconnect(current_user: current_user)
+    super
+  end
 
   # protected
 

@@ -1,13 +1,15 @@
 require "test_helper"
 
 class MessagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get messages_index_url
-    assert_response :success
+  fixtures :users
+  include Devise::Test::IntegrationHelpers
+
+  setup do
+    sign_in users(:one)
   end
 
-  test "should get create" do
-    get messages_create_url
+  test "should create my object" do
+    post '/rooms/1/messages', params: { message: { user_id: 1, room_id: 1, content: 'test content' } }
     assert_response :success
   end
 end

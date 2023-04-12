@@ -3,6 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all_except(current_user.id)
-    @rooms = current_user.rooms
+    # @rooms = current_user.rooms
   end
 end

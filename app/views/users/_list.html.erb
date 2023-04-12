@@ -1,0 +1,9 @@
+<div class="list-user d-flex flex-column">
+  <% if users.present? %>
+    <% users.each do |user| %>
+      <%= link_to user.email, convention_user_path(user.id), data: {turbo: "false"}, class: 'btn' %>
+    <% end %>
+  <% else %>
+    No user
+  <% end %>
+</div>

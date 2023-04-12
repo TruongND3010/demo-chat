@@ -1,11 +1,5 @@
-<div class="list-room">
-  <%# @users.each do |user| %>
-    <%#= link_to user.email, messages_path(user_id: user.id) %>
-  <%# end %>
-
-  <% @rooms.each do |room| %>
-    <%= render partial: "rooms/show", locals: {room: room} %>
-<!--    <p><%#= room %></p>-->
-    <%#= link_to user.email, messages_path(user_id: user.id) %>
-  <% end %>
+<div class="all-content">
+  <div class="block-user">
+    <%= render partial: "users/list", locals: {users: @users} %>
+  </div>
 </div>

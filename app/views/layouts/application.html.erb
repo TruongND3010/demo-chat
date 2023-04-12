@@ -8,59 +8,9 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <meta class="connect-websocket" value="<%= current_user.id if current_user.present? %>">
     <meta id="user-id-login" name="current_user" value="<%= current_user.id if current_user.present? %>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
-    <style>
-        .list-message {
-            margin: 0 auto;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .container {
-            border: 2px solid #dedede;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        .darker {
-            border-color: #ccc;
-            background-color: #ddd;
-        }
-
-        .container::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .container img {
-            float: left;
-            max-width: 60px;
-            width: 100%;
-            margin-right: 20px;
-            border-radius: 50%;
-        }
-
-        .container img.right {
-            float: right;
-            margin-left: 20px;
-            margin-right:0;
-        }
-
-        .time-right {
-            float: right;
-            color: #aaa;
-        }
-
-        .time-left {
-            float: left;
-            color: #999;
-        }
-    </style>
   </head>
 
   <body>

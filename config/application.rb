@@ -6,6 +6,9 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Thêm require cho gem sidekiq
+require 'sidekiq'
+
 module DemoChat
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -20,5 +23,7 @@ module DemoChat
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.time_zone = 'Asia/Tokyo'
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
